@@ -1,16 +1,46 @@
 
 # General concepts
 
- * POI: point of interest
- * GeoJSON
+## POI: point of interest
+
+ ![POI](images/poi.jpg "point of interest")
+
+## OpenStreetMap
+
+![OSM](images/osm_10.jpg "10 years of OpenStreetMap")
+
+ * [Map features](http://wiki.openstreetmap.org/wiki/Map_Features)
+ * Key/Value store / tags
+
+## GeoJSON
+
+ ```json
+ {
+   "type": "FeatureCollection",
+   "features": [
+     {
+       "geometry": {
+         "type": "Point",
+         "coordinates": [
+           13.3192854,
+           52.4904865
+         ]
+       }
+     }
+   ]
+ }
+ ```
+
+# Tools
+
  * OpenStreetMap
-  * [Map features](http://wiki.openstreetmap.org/wiki/Map_Features)
-  * Key/Value store / tags
- * Bounding Box
-
-# Links
-
+ * [geojson.io][]
+ * [leafletjs]
  * [overpass-turbo][]
+ * http://gist.github.com
+ * http://bl.ocks.org/
+
+# Examples
 
 ## find ping pong tables
 
@@ -25,7 +55,7 @@
   <has-kv k="sport" v="table_tennis"/>
   <bbox-query {{bbox}}/>
 </query>
-<print/>
+<print mode="body"/>
 ```
 
 ## find drinking water
@@ -39,8 +69,9 @@
   <has-kv k="amenity" v="drinking_water"/>  
   <bbox-query {{bbox}}/>
 </query>
-<print/>
+<print mode="body"/>
 ```
 
-
+[leafletjs]: http://leafletjs.com/
+[geojson.io]: http://geojson.io
 [overpass-turbo]: http://overpass-turbo.eu/
