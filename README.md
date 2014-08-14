@@ -41,6 +41,26 @@ wheelchair | yes
   <has-kv k="sport" v="table_tennis"/>
   <bbox-query {{bbox}}/>
 </query>
+
+<print mode="meta"/>
+```
+
+#### overpass query including ways (areas)
+
+```xml
+<union>
+  <query type="node">
+    <has-kv k="sport" v="table_tennis"/>
+    <bbox-query {{bbox}}/>
+  </query>
+
+  <query type="way">
+    <has-kv k="sport" v="table_tennis"/>
+    <bbox-query {{bbox}}/>
+  </query>
+  <recurse type="down"/>
+</union>
+
 <print mode="meta"/>
 ```
 
@@ -55,6 +75,7 @@ wheelchair | yes
   <has-kv k="amenity" v="drinking_water"/>
   <bbox-query {{bbox}}/>
 </query>
+
 <print mode="meta"/>
 ```
 
