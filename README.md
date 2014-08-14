@@ -9,7 +9,7 @@
 
 ![OSM](images/osm_10.jpg "10 years of OpenStreetMap")
 
- * Stores nodes, ways and relations
+ * Stores nodes, ways (collection of nodes) and relations (collection of nodes/ways)
  * Each element can have tags (key / value pairs):
 
 https://www.openstreetmap.org/node/29190909
