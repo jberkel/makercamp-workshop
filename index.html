@@ -80,6 +80,22 @@ function showProperties(l) {
     }
     if (table) l.bindPopup('<table class="marker-properties display">' + table + '</table>');
 }
+
+/*
+function onLocationFound(e) {
+  var radius = e.accuracy / 2;
+  L.circle(e.latlng, radius).addTo(map);
+}
+
+function onLocationError(e) {
+  alert(e.message);
+}
+
+map.on('locationfound', onLocationFound);
+map.on('locationerror', onLocationError);
+map.locate({setView: true, maxZoom: 16});
+*/
+
 </script>
 </body>
 </html>
