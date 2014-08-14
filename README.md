@@ -9,10 +9,73 @@
 
 ![OSM](images/osm_10.jpg "10 years of OpenStreetMap")
 
- * [Map features](http://wiki.openstreetmap.org/wiki/Map_Features)
- * Key/Value store / tags
+ * Stores nodes, ways and relations
+ * Each element can have tags (key / value pairs):
 
-## GeoJSON
+https://www.openstreetmap.org/node/29190909
+
+Key        | Value
+---------  | -------------
+name	     | U Bernauer Straße
+railway	   | station
+station	   | subway
+wheelchair | yes
+
+ * [Map features](http://wiki.openstreetmap.org/wiki/Map_Features)
+
+## Edit maps with ID
+
+## Query data with [overpass][]
+
+### find ping pong tables
+
+![ping pong table](images/tischtennis.jpg "typical berlin ping pong table, 20th century")
+
+[pongify.us]
+
+#### overpass query
+
+```xml
+<query type="node">
+  <has-kv k="leisure" v="pitch"/>
+  <has-kv k="sport" v="table_tennis"/>
+  <bbox-query {{bbox}}/>
+</query>
+<print mode="meta"/>
+```
+
+### find drinking water / pumps
+
+![berliner pumpe](images/berliner-pumpe.jpg "typical berlin pump, 19th century")
+
+#### overpass query
+
+```xml
+<query type="node">
+  <has-kv k="amenity" v="drinking_water"/>
+  <bbox-query {{bbox}}/>
+</query>
+<print mode="meta"/>
+```
+
+### find ping pong tables near water
+
+```xml
+<query type="node">
+  <has-kv k="amenity" v="drinking_water"/>
+  <bbox-query {{bbox}}/>
+</query>
+
+<query type="node">
+  <around radius="300"/>
+  <has-kv k="leisure" v="pitch"/>
+  <has-kv k="sport" v="table_tennis"/>
+</query>
+
+<print mode="meta"/>
+```
+
+## Export and share with GeoJSON
 
  ```json
  {
@@ -33,45 +96,15 @@
 
 # Tools
 
- * OpenStreetMap
+ * [OpenStreetMap][]
  * [geojson.io][]
- * [leafletjs]
- * [overpass-turbo][]
- * http://gist.github.com
- * http://bl.ocks.org/
+ * [Leaflet]
+ * [gist][] + [bl.ocks.org][]
 
-# Examples
-
-## find ping pong tables
-
-![berliner pumpe](images/tischtennis.jpg "typical berlin ping pong table, 20th century")
-
-
-### query
-
-```xml
-<query type="node">
-  <has-kv k="leisure" v="pitch"/>
-  <has-kv k="sport" v="table_tennis"/>
-  <bbox-query {{bbox}}/>
-</query>
-<print mode="body"/>
-```
-
-## find drinking water
-
-![berliner pumpe](images/berliner-pumpe.jpg "typical berlin pump, 19th century")
-
-### query
-
-```xml
-<query type="node">
-  <has-kv k="amenity" v="drinking_water"/>  
-  <bbox-query {{bbox}}/>
-</query>
-<print mode="body"/>
-```
-
-[leafletjs]: http://leafletjs.com/
+[OpenStreetMap]: https://www.openstreetmap.org/
+[pongify.us]: http://pongify.us
+[Leaflet]: http://leafletjs.com/
 [geojson.io]: http://geojson.io
-[overpass-turbo]: http://overpass-turbo.eu/
+[overpass]: http://overpass-turbo.eu/
+[gist]: http://gist.github.com
+[bl.ocks.org]: http://bl.ocks.org/
